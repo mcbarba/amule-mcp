@@ -2,7 +2,10 @@
 name = "amule-mcp"
 version = "0.1.0"
 edition = "2021"
+description = "MCP (Model Context Protocol) server to control aMule using Docker"
 license = "GPL-3.0"
+repository = "https://github.com/mcbarba/amule-mcp"
+
 
 [dependencies]
 tokio = { version = "1", features = ["full"] }
