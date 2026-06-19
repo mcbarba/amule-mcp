@@ -1,57 +1,57 @@
 # aMule MCP Server
 
-Servidor MCP (Model Context Protocol) que permite a un modelo de IA controlar una instancia de aMule corriendo en Docker, a través del protocolo JSON-RPC 2.0 via stdin/stdout.
+MCP (Model Context Protocol) server that allows an AI model to control an aMule instance running in Docker, through the JSON-RPC 2.0 protocol via stdin/stdout.
 
-## Herramientas disponibles
+## Available tools
 
-| Herramienta        | Descripción                                      |
+| Tool               | Description                                      |
 |--------------------|--------------------------------------------------|
-| `get_status`       | Muestra el estado global de conexiones de aMule  |
-| `list_downloads`   | Lista las descargas activas                      |
-| `add_link`         | Añade un enlace eD2k o Magnet a la cola          |
+| `get_status`       | Shows aMule's global connection status           |
+| `list_downloads`   | Lists active downloads                           |
+| `add_link`         | Adds an eD2k or Magnet link to the queue         |
 
-## Requisitos
+## Requirements
 
 - **Rust** (edition 2021+) — [rustup.rs](https://rustup.rs)
-- **Docker** con un contenedor de aMule que tenga `amulecmd` disponible
-- El contenedor debe tener habilitada la interfaz remota de aMule con contraseña
+- **Docker** with an aMule container that has `amulecmd` available
+- The container must have aMule's remote interface enabled with a password
 
-## Compilación
+## Compilation
 
 ```bash
 cargo build --release
 ```
 
-El binario se genera en `target/release/amule-mcp`.
+The binary is generated at `target/release/amule-mcp`.
 
-## Variables de entorno
+## Environment variables
 
-| Variable            | Requerida | Descripción                                  | Valor por defecto |
-|---------------------|-----------|----------------------------------------------|--------------------|
-| `AMULE_CONTAINER`   | No        | Nombre del contenedor Docker de aMule         | `amule`            |
-| `AMULE_PASSWORD`    | **Sí**    | Contraseña de la interfaz remota de aMule     | —                  |
+| Variable            | Required | Description                                  | Default value |
+|---------------------|----------|----------------------------------------------|----------------|
+| `AMULE_CONTAINER`   | No       | Name of the aMule Docker container           | `amule`        |
+| `AMULE_PASSWORD`    | **Yes**  | Password for aMule's remote interface        | —              |
 
-## Uso
+## Usage
 
-### Ejecución directa
+### Direct execution
 
 ```bash
-export AMULE_PASSWORD="tu_contraseña"
-export AMULE_CONTAINER="amule"  # opcional
+export AMULE_PASSWORD="your_password"
+export AMULE_CONTAINER="amule"  # optional
 ./target/release/amule-mcp
 ```
 
-### Como servidor MCP
+### As an MCP server
 
-Configura el servidor en tu cliente MCP (por ejemplo, en `opencode`, `claude-desktop`, etc.):
+Configure the server in your MCP client (for example, in `opencode`, `claude-desktop`, etc.):
 
 ```json
 {
   "mcpServers": {
     "amule": {
-      "command": "/ruta/a/amule-mcp",
+      "command": "/path/to/amule-mcp",
       "env": {
-        "AMULE_PASSWORD": "tu_contraseña",
+        "AMULE_PASSWORD": "your_password",
         "AMULE_CONTAINER": "amule"
       }
     }
@@ -59,14 +59,14 @@ Configura el servidor en tu cliente MCP (por ejemplo, en `opencode`, `claude-des
 }
 ```
 
-### Ejemplos de uso con la IA
+### AI usage examples
 
-Una vez conectado, puedes pedirle a la IA:
+Once connected, you can ask the AI:
 
-- *"¿Cuál es el estado de aMule?"* → usa `get_status`
-- *"Muéstrame las descargas activas"* → usa `list_downloads`
-- *"Añade este enlace: ed2k://|file|..."* → usa `add_link`
+- *"What is the status of aMule?"* → uses `get_status`
+- *"Show me active downloads"* → uses `list_downloads`
+- *"Add this link: ed2k://|file|..."* → uses `add_link`
 
-## Licencia
+## License
 
-Este proyecto está licenciado bajo la GNU General Public License v3.0 - ver el archivo [LICENSE](LICENSE) para más detalles.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
