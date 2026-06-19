@@ -43,6 +43,10 @@ export AMULE_CONTAINER="amule"  # optional
 
 ### As an MCP server
 
+Install
+`cargo install --quiet amule-mcp `
+
+
 Configure the server in your MCP client (for example, in `opencode`, `claude-desktop`, etc.):
 
 ```json
