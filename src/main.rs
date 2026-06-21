@@ -129,7 +129,7 @@ async fn main() {
                     "result": {
                         "protocolVersion": "2024-11-05",
                         "capabilities": { "tools": {} },
-                        "serverInfo": { "name": "amule-mcp", "version": "0.1.0" }
+                        "serverInfo": { "name": "amule-mcp", "version": "0.2.0" }
                     }
                 }),
                 // 2. Lista de herramientas disponibles
