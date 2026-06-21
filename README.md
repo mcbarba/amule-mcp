@@ -4,11 +4,19 @@ MCP (Model Context Protocol) server that allows an AI model to control an aMule 
 
 ## Available tools
 
-| Tool               | Description                                      |
-|--------------------|--------------------------------------------------|
-| `get_status`       | Shows aMule's global connection status           |
-| `list_downloads`   | Lists active downloads                           |
-| `add_link`         | Adds an eD2k or Magnet link to the queue         |
+| Tool                   | Description                                           |
+|------------------------|-------------------------------------------------------|
+| `get_status`           | Shows aMule's global connection status                |
+| `list_downloads`       | Lists active downloads                                |
+| `add_link`             | Adds an eD2k or Magnet link to the queue              |
+| `pause_download`       | Pauses a single download by hash                      |
+| `pause_all_downloads`  | Pauses all active downloads                           |
+| `resume_download`      | Resumes a paused download by hash                     |
+| `resume_all_downloads` | Resumes all paused downloads                          |
+| `cancel_download`      | Removes/cancels a single download by hash             |
+| `cancel_all_downloads` | Removes all active downloads                          |
+| `set_priority`         | Changes priority of a single download (Low/Normal/High/Auto) |
+| `set_priority_all`     | Changes priority of all downloads                     |
 
 ## Requirements
 
@@ -70,6 +78,12 @@ Once connected, you can ask the AI:
 - *"What is the status of aMule?"* → uses `get_status`
 - *"Show me active downloads"* → uses `list_downloads`
 - *"Add this link: ed2k://|file|..."* → uses `add_link`
+- *"Pause download ABC123"* → uses `pause_download`
+- *"Pause all downloads"* → uses `pause_all_downloads`
+- *"Resume all paused downloads"* → uses `resume_all_downloads`
+- *"Cancel download ABC123"* → uses `cancel_download`
+- *"Set priority High for download ABC123"* → uses `set_priority`
+- *"Set all downloads to Low priority"* → uses `set_priority_all`
 
 ## License
 
